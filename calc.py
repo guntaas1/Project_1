@@ -1,29 +1,28 @@
-
-def myAdd(num1 ,num2):   #function for Addition
+def myAdd(num1 ,num2):              #function for Addition
     total = num1 + num2
-    return total
+    return total                    #this line is to return the total of the above lines
 
-def mySub(num1 ,num2):   #function for Subtraction
+def mySub(num1 ,num2):              #function for Subtraction
     total = num1 - num2
-    return total
+    return total                    #this line is to return the total of the above lines
 
-def myMul(num1 ,num2):   #function for Multiplication
+def myMul(num1 ,num2):              #function for Multiplication
     total = num1 * num2
-    return total
+    return total                    #this line is to return the total of the above lines
 
-def myDiv(num1 ,num2):   #function for Division
+def myDiv(num1 ,num2):              #function for Division
     total = (num1 / num2)
-    return total
+    return total                    #this line is to return the total of the above lines
 
-def check_operator(opr_): # this function is used to check whether the input is operator
-    opr_list = ['/','-','+','*']
+def check_operator(opr_):           # this function is used to check whether the input is operator
+    opr_list = ['/','-','+','*']    # this list is for the checking the user input opertor
     x = False
     for opr in opr_list:
         if opr_ == opr:
             x = True
     return x
 
-def check_number(user_input): #this function is used to check whether the input is a number
+def check_number(user_input):       #this function is used to check whether the input is a number
     try:
         number = float(user_input)
         if number.is_integer():
@@ -34,7 +33,7 @@ def check_number(user_input): #this function is used to check whether the input 
         return False
 
 def main(): 
-    def_list = ["first" , "second" , "third"]
+    def_list = ["first" , "second" , "third"]   #
     num_list = []                                #this is an empty list of numbers
     opr_list = []                                # this is an empty list of operators
     i = 0
@@ -56,3 +55,47 @@ def main():
             j = j + 1
         else:
             print("Try again.")
+
+    print()                                         #these lines shows for showing what the user has given us.
+    print("You input is:")
+    print(num_list[0] , opr_list[0] , num_list[1] , opr_list[1] , num_list[2])
+    print()
+
+    if ((opr_list[0] == '/') and (opr_list[1] == '/')):                                     #this line checks for((num1/num2)/num3)
+        print("Your output is:" , int(myDiv(myDiv(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '/') and (opr_list[1] == '*')):                                   #this line checks for((num1/num2)*num3)
+        print("Your output is:" , int(myMul(myDiv(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '/') and (opr_list[1] == '+')):                                   #this line checks for((num1/num2)+num3)
+        print("Your output is:" , int(myAdd(myDiv(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '/') and (opr_list[1] == '-')):                                   #this line checks for((num1/num2)-num3)
+        print("Your output is:" , int(mySub(myDiv(num_list[0],num_list[1]),num_list[2])))
+
+    elif ((opr_list[0] == '*') and (opr_list[1] == '/')):                                   #this line checks for((num1*(num2/num3))
+        print("Your output is:" , int(myMul(num_list[0],myDiv(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '*') and (opr_list[1] == '*')):                                   #this line checks for((num1*num2)*num3)
+        print("Your output is:" , int(myMul(myMul(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '*') and (opr_list[1] == '+')):                                   #this line checks for((num1*num2)+num3)
+        print("Your output is:" , int(myAdd(myMul(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '*') and (opr_list[1] == '-')):                                   #this line checks for((num1*num2)-num3)
+        print("Your output is:" , int(mySub(myMul(num_list[0],num_list[1]),num_list[2])))
+
+    elif ((opr_list[0] == '+') and (opr_list[1] == '/')):                                   #this line checks for((num1+(num2/num3))
+        print("Your output is:" , int(myAdd(num_list[0],myDiv(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '+') and (opr_list[1] == '*')):                                   #this line checks for(num1+(num2*num3))
+        print("Your output is:" , int(myAdd(num_list[0],myMul(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '+') and (opr_list[1] == '+')):                                   #this line checks for(num1+num2)+num3)
+        print("Your output is:" , int(myAdd(myAdd(num_list[0],num_list[1]),num_list[2])))
+    elif ((opr_list[0] == '+') and (opr_list[1] == '-')):                                   #this line checks for(num1+num2)-num3)
+        print("Your output is:" , int(mySub(myAdd(num_list[0],num_list[1]),num_list[2])))
+
+    elif ((opr_list[0] == '-') and (opr_list[1] == '/')):                                   #this line checks for(num1-(num2/num3))
+        print("Your output is:" , int(mySub(num_list[0],myDiv(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '-') and (opr_list[1] == '*')):                                   #this line checks for(num1-(num2*num3))
+        print("Your output is:" , int(mySub(num_list[0],myMul(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '-') and (opr_list[1] == '+')):                                   #this line checks for(num1-(num2+num3))
+        print("Your output is:" , int(mySub(num_list[0],myAdd(num_list[1],num_list[2]))))
+    elif ((opr_list[0] == '-') and (opr_list[1] == '-')):                                   #this line checks for((num1-num2)-num3)
+        print("Your output is:" , int(mySub(mySub(num_list[0],num_list[1]),num_list[2])))
+
+if __name__ == '__main__':
+    main()
